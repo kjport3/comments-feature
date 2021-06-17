@@ -1,0 +1,49 @@
+.container {
+  width: 100%;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0 auto 10px;
+}
+
+.highlight {
+  width: 100%;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0 auto 10px;
+  box-shadow: 2px 2px 2px #fbe01b;
+}
+
+.container:hover {
+  box-shadow: 2px 2px 2px #fbe01b;
+}
+
+.commentContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.comment {
+  white-space: pre-wrap;
+  padding: 5px 5px 5px 10px;
+}
+
+.author {
+  text-align: right;
+  padding: 10px 10px 0;
+  border-top: 1px solid #ddd;
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.name {
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 480px) {
+  .author {
+    font-size: 12px;
+  }
+}

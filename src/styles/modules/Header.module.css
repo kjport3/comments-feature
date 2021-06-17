@@ -1,0 +1,29 @@
+.logo {
+  width: 70px;
+  height: auto;
+}
+
+.headline {
+  text-transform: capitalize;
+  text-shadow: 2px 2px 2px #ddd;
+  color: #333;
+  align-self: center;
+  margin-left: 10px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #fbe01b;
+}
+
+.container {
+  display: flex;
+  margin: 20px 0;
+}
+
+@media only screen and (max-width: 480px) {
+  .logo {
+    width: 50px;
+    height: auto;
+  }
+  .headline {
+    font-size: 1.2em;
+  }
+}
