@@ -7,7 +7,7 @@ const Comment = ({ styles, comment }) => {
     
   const toggleClass = () => setIsActive(!isActive);
 
-  const d = comment.created;
+  let d = comment.created + "Z";
   const date = format(d, "MMM do");
   const time = format(d, "h:mm A");
   const timestamp = `${date} at ${time}`;
