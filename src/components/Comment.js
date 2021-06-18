@@ -2,10 +2,7 @@ import { useState } from "react";
 import { format } from "date-fns";
 
 const Comment = ({ styles, comment }) => {
-  
   const [isActive, setIsActive] = useState(false);
-    
-  const toggleClass = () => setIsActive(!isActive);
 
   let d = comment.created + "Z";
   const date = format(d, "MMM do");
@@ -13,13 +10,15 @@ const Comment = ({ styles, comment }) => {
   const timestamp = `${date} at ${time}`;
 
   return (
-    <div className={isActive ? styles.highlight : styles.container}>
+    <div
+      className={isActive ? styles.highlight : styles.container}
+      onClick={() => setIsActive(!isActive)}
+    >
       <div className={styles.commentContainer}>
-        <p className={styles.comment} onClick={toggleClass}>{comment.message}</p>
+        <p className={styles.comment}>{comment.message}</p>
       </div>
-      <p className={styles.author} onClick={toggleClass}>
-        by <span className={styles.name}>{comment.name}</span> -{" "}
-        {timestamp}
+      <p className={styles.author}>
+        by <span className={styles.name}>{comment.name}</span> - {timestamp}
       </p>
     </div>
   );

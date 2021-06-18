@@ -120,7 +120,7 @@ describe("Submit comment", () => {
       const messageInput = screen.queryByTestId("message-input");
       const randNumber = Math.floor(Math.random() * 201);
       
-      act( async () => {
+      await act(async () => {
         fireEvent.change(nameInput, {
           target: { value: "Frederick von Chimpenheimer IV" },
         });
@@ -141,96 +141,78 @@ describe("Submit comment", () => {
   });
 });
 
-describe("Delete button", () => {
-  test("Renders after comment is added", () => {
-    render(<App />);
-
-    const nameInput = screen.queryByTestId("name-input");
-      const messageInput = screen.queryByTestId("message-input");
-      const randNumber = Math.floor(Math.random() * 201);
-      
-      act( async () => {
-        fireEvent.change(nameInput, {
-          target: { value: "Frederick von Chimpenheimer IV" },
-        });
-        fireEvent.change(messageInput, {
-          target: { value: `I go by Freddie. I can eat ${randNumber} bananas.` },
-        });
-  
-        fireEvent.click(screen.queryByTestId("comment-button"));
-  
-        await screen.findByTestId("delete-comments");
-        
-        expect(screen.queryByTestId("delete-comments")).toBeTruthy();
-      })
-  });
-
-  test("Clicking it triggers deleteComments", () => {
-    const deleteComments = jest.fn();
-
-    render(<App />);
-
-    const nameInput = screen.queryByTestId("name-input");
-      const messageInput = screen.queryByTestId("message-input");
-      const randNumber = Math.floor(Math.random() * 201);
-      
-      act( async () => {
-        fireEvent.change(nameInput, {
-          target: { value: "Frederick von Chimpenheimer IV" },
-        });
-        fireEvent.change(messageInput, {
-          target: { value: `I go by Freddie. I can eat ${randNumber} bananas.` },
-        });
-  
-        fireEvent.click(screen.queryByTestId("comment-button"));
-  
-        const button = await screen.findByTestId("delete-comments");
-
-        fireEvent.click(button);
-        
-        expect(deleteComments).toHaveBeenCalled();
-      })
-  });
-
-  test("Deleting all comments makes message show", () => {
-    render(<App />);
-
-    const nameInput = screen.queryByTestId("name-input");
-      const messageInput = screen.queryByTestId("message-input");
-      const randNumber = Math.floor(Math.random() * 201);
-      
-      act( async () => {
-        fireEvent.change(nameInput, {
-          target: { value: "Frederick von Chimpenheimer IV" },
-        });
-        fireEvent.change(messageInput, {
-          target: { value: `I go by Freddie. I can eat ${randNumber} bananas.` },
-        });
-  
-        fireEvent.click(screen.queryByTestId("comment-button"));
-  
-        const button = await screen.findByTestId("delete-comments");
-
-        fireEvent.click(button);
-        
-        expect(screen.queryByText("No comments to show...")).toBeTruthy();
-      })
-  });
-});
-
-// describe("Delete all comments", () => {
-//   test("Click the button", () => {
+// describe("Delete button", () => {
+//   test("Renders after comment is added", async () => {
 //     render(<App />);
 
-//     act(() => {
-//       fireEvent.click(screen.queryByTestId("delete-comments"));
+//     const nameInput = screen.queryByTestId("name-input");
+//       const messageInput = screen.queryByTestId("message-input");
+//       const randNumber = Math.floor(Math.random() * 201);
+      
+//       await act( async () => {
+//         fireEvent.change(nameInput, {
+//           target: { value: "Frederick von Chimpenheimer IV" },
+//         });
+//         fireEvent.change(messageInput, {
+//           target: { value: `I go by Freddie. I can eat ${randNumber} bananas.` },
+//         });
+  
+//         fireEvent.click(screen.queryByTestId("comment-button"));
+  
+//         await screen.findByTestId("delete-comments");
+        
+//         expect(screen.queryByTestId("delete-comments")).toBeTruthy();
+//       })
+//   });
 
-//       const message = screen.queryByText(
-//         `No comments to show...`
-//       );
+//   test("Clicking it triggers deleteComments", async () => {
+//     const deleteComments = jest.fn();
 
-//       expect(message).toBeTruthy();
-//     })
+//     render(<App />);
+
+//     const nameInput = screen.queryByTestId("name-input");
+//       const messageInput = screen.queryByTestId("message-input");
+//       const randNumber = Math.floor(Math.random() * 201);
+      
+//       await act( async () => {
+//         fireEvent.change(nameInput, {
+//           target: { value: "Frederick von Chimpenheimer IV" },
+//         });
+//         fireEvent.change(messageInput, {
+//           target: { value: `I go by Freddie. I can eat ${randNumber} bananas.` },
+//         });
+  
+//         fireEvent.click( screen.queryByTestId("comment-button"));
+  
+//         const button = await screen.findByTestId("delete-comments");
+
+//         fireEvent.click(button);
+        
+//         expect(deleteComments).toHaveBeenCalled();
+//       })
+//   });
+
+//   test("Deleting all comments makes message show", async () => {
+//     render(<App />);
+
+//     const nameInput = screen.queryByTestId("name-input");
+//       const messageInput = screen.queryByTestId("message-input");
+//       const randNumber = Math.floor(Math.random() * 201);
+      
+//       await act( async () => {
+//         fireEvent.change(nameInput, {
+//           target: { value: "Frederick von Chimpenheimer IV" },
+//         });
+//         fireEvent.change(messageInput, {
+//           target: { value: `I go by Freddie. I can eat ${randNumber} bananas.` },
+//         });
+  
+//         fireEvent.click(screen.queryByTestId("comment-button"));
+
+//         fireEvent.click(screen.queryByTestId("delete-comments"));
+        
+//         expect(screen.queryByText("No comments to show...")).toBeTruthy();
+//       })
 //   });
 // });
 
