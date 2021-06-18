@@ -14,6 +14,8 @@ const Comment = ({ comment }) => {
   const timestamp = `${date} at ${time}`;
 
   return (
+    // Conditionally render title text and 
+    // checkmark icon when user clicks a comment
     <div
       className={styles.container}
       onClick={() => setIsRead(!isRead)}
@@ -21,21 +23,11 @@ const Comment = ({ comment }) => {
     >
       <div className={styles.commentContainer}>
         <p className={styles.comment}>
-          <span
-            className={styles.text}
-            title={comment.message}
-          >
+          <span className={styles.text} title={comment.message}>
             {comment.message}
           </span>
         </p>
-        <FaCheck
-          className={isRead ? styles.show : styles.hide}
-          style={{
-            fontSize: "16px",
-            alignSelf: "flex-start",
-            marginTop: "22px",
-          }}
-        />
+        <FaCheck className={isRead ? styles.showIcon : styles.hide} />
       </div>
       <p className={styles.author}>
         by <span className={styles.name}>{comment.name}</span> - {timestamp}

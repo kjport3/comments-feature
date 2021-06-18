@@ -46,7 +46,6 @@ const DeleteButton = ({ Api, setComments, setEmpty, url }) => {
   return (
     <>
       <button
-        style={{ margin: "20px 0 30px" }}
         className="deleteButton"
         data-testid="delete-comments"
         onClick={() => deleteComments()}

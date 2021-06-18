@@ -48,14 +48,6 @@ app.get('/getComments', function(request, response) {
   });
 });
 
-app.delete('/deleteComment', function(request, response) {
-  const { body } = request;
-  const { id } = body;
-  comment.deleteComment(id).then(result => {
-    response.send(result);
-  });
-});
-
 app.delete('/deleteComments', function(request, response) {
   comment.deleteComments().then(result => {
     response.send(result);

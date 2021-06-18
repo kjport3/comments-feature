@@ -57,6 +57,8 @@ const App = () => {
           url={url}
           comments={comments}
         />
+        {/* If neither loading or empty states are true, 
+        show Comments & Button components */}
         {!loading && !empty ? (
           <>
             <Comments comments={comments} />
@@ -70,6 +72,7 @@ const App = () => {
         ) : (
           ""
         )}
+        {/* Conditionally render a message indicating the state */}
         {empty && <p>No comments to show...</p>}
         {loading && <p>Loading...</p>}
       </div>

@@ -79,6 +79,7 @@ const CommentInput = ({ setComments, setEmpty, Api, url, comments }) => {
   return (
     <div className="addCommentContainer">
       <label htmlFor="name">Name:</label>
+      {/* Use state to update the values in the inputs on change */}
       <input
         required
         type="text"
@@ -97,6 +98,7 @@ const CommentInput = ({ setComments, setEmpty, Api, url, comments }) => {
         value={message}
         onChange={(event) => setMessage(event.target.value)}
       ></textarea>
+      {/* Disable the button if we don't have values in both inputs */}
       <button
         disabled={!name || !message ? true : false}
         data-testid="comment-button"

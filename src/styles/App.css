@@ -92,6 +92,7 @@ button:hover {
   background: #fff;
   color: #b22222;
   border: 1px solid #b22222;
+  margin: 20px 0 30px;
 }
 
 .deleteButton:hover {

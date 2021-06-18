@@ -7,6 +7,8 @@ const Comments = ({ comments }) => {
   });
 
   return (
+    // Pass each comment object in the array 
+    // the the Comment component as a prop
     <>
       {comments.map((comment, index) => (
         <Comment key={index} comment={comment} />
