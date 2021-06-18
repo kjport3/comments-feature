@@ -13,6 +13,11 @@ class Comment {
     return this.dataAccessObject.run(sql);
   }
 
+  deleteComment(id) {
+    const sql = `DELETE FROM comments WHERE id = ?${id}`;
+    return this.dataAccessObject.run(sql);
+  }
+
   deleteComments() {
     const sql = 'DELETE FROM comments';
     return this.dataAccessObject.run(sql);

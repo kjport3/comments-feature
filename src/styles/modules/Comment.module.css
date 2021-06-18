@@ -6,28 +6,34 @@
   margin: 0 auto 10px;
 }
 
-.highlight {
-  width: 100%;
-  border: 1px solid #aaa;
-  border-radius: 10px;
-  padding: 0;
-  margin: 0 auto 10px;
-  box-shadow: 2px 2px 2px #fbe01b;
-}
-
 .container:hover {
-  box-shadow: 2px 2px 2px #fbe01b;
+  cursor: pointer;
 }
 
 .commentContainer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 }
 
 .comment {
   white-space: pre-wrap;
   padding: 5px 5px 5px 10px;
+  flex-basis: 91%;
+}
+
+.text:hover {
+  cursor: text !important;
+}
+
+.show {
+  visibility: visible;
+  flex-basis: 9%;
+}
+
+.hide {
+  visibility: hidden;
+  flex-basis: 9%;
 }
 
 .author {
