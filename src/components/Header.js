@@ -1,4 +1,6 @@
-const Header = ({ styles }) => {
+import styles from "../styles/modules/Header.module.css";
+
+const Header = () => {
   return (
     <div className={styles.container}>
       <img src="mailchimp.png" alt="Mailchimp" className={styles.logo} />

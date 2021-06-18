@@ -1,6 +1,7 @@
 import Comment from "./Comment";
 
-const Comments = ({ styles, comments }) => {
+const Comments = ({ comments }) => {
+  // Sort the comments by id
   comments.sort((a, b) => {
     return b.id - a.id;
   });
@@ -8,7 +9,7 @@ const Comments = ({ styles, comments }) => {
   return (
     <>
       {comments.map((comment, index) => (
-        <Comment styles={styles} key={index} comment={comment} />
+        <Comment key={index} comment={comment} />
       ))}
     </>
   );

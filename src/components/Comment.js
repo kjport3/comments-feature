@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { format } from "date-fns";
 import { FaCheck } from "react-icons/fa";
+import styles from "../styles/modules/Comment.module.css";
 
-const Comment = ({ styles, comment }) => {
+const Comment = ({ comment }) => {
+  // Initialize state for a "Mark as read"
   const [isRead, setIsRead] = useState(false);
 
+  // Format the timestamp
   let d = comment.created + "Z";
   const date = format(d, "MMM do");
   const time = format(d, "h:mm A");

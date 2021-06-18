@@ -6,8 +6,6 @@ import Header from "./components/Header";
 import AddComment from "./components/AddComment";
 import Comments from "./components/Comments";
 import DeleteButton from "./components/DeleteButton";
-import headerStyles from "./styles/modules/Header.module.css";
-import commentStyles from "./styles/modules/Comment.module.css";
 import "./styles/react-confirm-alert.css";
 import "./styles/App.css";
 import "./styles/theme.css";
@@ -16,18 +14,22 @@ import "./styles/animate.css";
 const App = () => {
   const url = "http://localhost:3001";
 
+  // Initial useState hooks for comments, empty & loading states
   const [comments, setComments] = useState([]);
   const [empty, setEmpty] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Run useEffect hook for initial render to get comments from the server
   useEffect(() => {
     Api.get(`${url}/getComments`)
+      // If request is fulfilled, update states
       .then((res) => {
         const commentsFromServer = res;
         setComments(commentsFromServer);
-        commentsFromServer.length > 0 ? setEmpty(false) : setEmpty(true);
         setLoading(false);
+        commentsFromServer.length > 0 ? setEmpty(false) : setEmpty(true);
       })
+      // If request is rejected, log the error, notify the user
       .catch((err) => {
         console.log(err);
         confirmAlert({
@@ -47,7 +49,7 @@ const App = () => {
       <ReactNotification isMobile={true} />
 
       <div className="container">
-        <Header styles={headerStyles} />
+        <Header />
         <AddComment
           setComments={setComments}
           setEmpty={setEmpty}
@@ -57,7 +59,7 @@ const App = () => {
         />
         {!loading && !empty ? (
           <>
-            <Comments styles={commentStyles} comments={comments} />
+            <Comments comments={comments} />
             <DeleteButton
               Api={Api}
               setComments={setComments}

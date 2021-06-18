@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { store } from "react-notifications-component";
 import { confirmAlert } from "react-confirm-alert";
-import "../styles/react-confirm-alert.css";
 
 const CommentInput = ({ setComments, setEmpty, Api, url, comments }) => {
-  const [message, setMessage] = useState("");
+  // Initial useState hooks for name & message
   const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
 
   // Add a comment
+  // Destructure the object in the function arguments
   const addComment = async ({ name, message, created }) => {
     Api.post(`${url}/createComment`, {
       name: name,
@@ -15,10 +16,13 @@ const CommentInput = ({ setComments, setEmpty, Api, url, comments }) => {
       created: created,
     })
       .then((res) => {
+        // Update state
         setComments([res.body, ...comments]);
         setEmpty(false);
         setMessage("");
         setName(name);
+
+        // Show a notification
         store.addNotification({
           title: name,
           message: message,
@@ -37,8 +41,11 @@ const CommentInput = ({ setComments, setEmpty, Api, url, comments }) => {
         });
       })
       .catch((err) => {
+        // Keep values in the inputs if there's an error
         setMessage(message);
         setName(name);
+
+        // Log the error to the console & give the user an alert
         console.log(err);
         confirmAlert({
           title: "Oops",
@@ -52,16 +59,20 @@ const CommentInput = ({ setComments, setEmpty, Api, url, comments }) => {
       });
   };
 
-  const onSubmit = (event) => {
+  const handleClick = (event) => {
+    // Prevent any unwanted browser behavior on submit
     event.preventDefault();
 
-    const created = new Date();
-
+    // Make sure we have both inputs
     if (!message || !name) {
       alert("Please add both fields");
       return;
     }
 
+    // Create the date to add to server
+    const created = new Date();
+
+    // Pass an object to addComment with our inputs
     addComment({ name, message, created });
   };
 
@@ -90,12 +101,10 @@ const CommentInput = ({ setComments, setEmpty, Api, url, comments }) => {
         disabled={!name || !message ? true : false}
         data-testid="comment-button"
         className={!name || !message ? "commentButtonDisabled" : "commentButton"}
-        type="submit"
-        onClick={onSubmit}
+        onClick={handleClick}
       >
         COMMENT
       </button>
-      {/* <hr /> */}
     </div>
   );
 };
