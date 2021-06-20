@@ -136,7 +136,6 @@ describe("Submit comment", () => {
   
         expect(comment).toBeTruthy();
       })
-      
     });
   });
 });
